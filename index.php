@@ -17,13 +17,13 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Nome</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="Nome">
+                                <input type="text" id="input-nome" class="form-control" placeholder="Nome">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Endereço</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="Endereço">
+                                <input type="text" id="input-endereco" class="form-control" placeholder="Endereço">
                             </div>
                         </div>
                         <div class="form-group">
@@ -41,20 +41,33 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox"> Remember me
+                                        <input type="checkbox" checked> Ativo
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Sign in</button>
+                                <button class="btn btn-success" id="btn-enviar" type="submit" >Inserir</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6">.col-md-6</div>
+                <div class="col-md-6">
+                    <h5>Listagem de pessoas</h5>
+                </div>
             </div>
         </div>
+        <script>
+        $('#btn-enviar').click(function(){
+            if($('#input-nome').val()==''){
+                alert('Preencha o nome');
+            }
+            
+            if($('#input-endereco').val()==''){
+                alert('Preencha o endereço');
+            }
+        })
+        </script>
     </body>
 </html>
