@@ -3,7 +3,32 @@ echo '<pre>';
 var_dump($_GET);
 echo '</pre>';
 
-exit;
+$con = new mysqli('127.0.0.1','root','','lp22015');
+
+$sql = $con->prepare(''
+        . 'INSERT INTO pessoas ('
+        . 'nome, '
+        . 'endereco, '
+        . 'sexo, '
+        . 'ativo) '
+        . 'VALUES (?,?,?,?)');
+
+if(isset($_GET['ativo'])){
+    $ativo = 1;
+}else{
+    $ativo = 0;
+}
+
+$sql->bind_param('sssi', $_GET['nome'], $_GET['endereco'], $_GET['sexo'], $ativo);
+
+if($sql->execute()){
+    echo '<h2>Sucesso!</h2>';
+}else{
+    echo '<pre>';
+    var_dump($sql->error_list);
+    echo '</pre>';
+}
+
 ?>
 
 <!DOCTYPE html>
